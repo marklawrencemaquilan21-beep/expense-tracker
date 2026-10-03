@@ -1,8 +1,6 @@
 # Module 0 - Laboratory 1: The landing page
-# Author : MARK LAWRENCE N. MAQUILAN    
+# Author : MARK LAWRENCE N. MAQUILAN
 # A simple landing page for an expense tracker.
-
-author = "MARK LAWRENCE N. MAQUILAN"
 
 print("=" * 40)
 print("\t EXPENSE TRACKER")
@@ -18,5 +16,5 @@ print(f"\t[3] {'Show total spent':<20} (coming soon)")
 print(f"\t[4] {'Exit':<20} (coming soon)")
 
 print("-" * 40)
-print("Made By:", author, "| Installment 1")
+print("Made by: MARK LAWRENCE N. MAQUILAN | Installment 1")
 print("=" * 40)
