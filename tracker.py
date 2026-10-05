@@ -1,6 +1,6 @@
-# Module 1 - Laboratory 2: Talking to the User
+# Module 1 - Laboratory 3: The Tracker Does Math
 # Author: MARK LAWRENCE N. MAQUILAN
-# A simple expense tracker that accepts two expenses.
+# A simple expense tracker that accepts a user-defined number of expenses.
 
 author = "MARK LAWRENCE N. MAQUILAN"
 
@@ -15,25 +15,33 @@ print(f"\t[2] {'View all expenses':<20} (coming soon)")
 print(f"\t[3] {'Show total spent':<20} (coming soon)")
 print(f"\t[4] {'Exit':<20} (coming soon)")
 
+
 name = input("\nWhat's your name? ")
-print(f"Welcome, {name}! Let's log your two expenses.\n")
+print(f"Welcome, {name}! Let's log your expenses.\n")
 
-item1 = input("What's your first expense? ")
-amount1 = float(input("Amount? "))
+# Number of expenses to enter
+num_expenses = int(input("How many expenses will you enter? "))
 
-item2 = input("\nWhat's your second expense? ")
-amount2 = float(input("Amount? "))
+items = []
+amounts = []
 
-total = amount1 + amount2
-average = total / 2
+# Loop for collecting each expense
+for i in range(1, num_expenses + 1):
+    item = input(f"\nWhat is your expense no. {i}? ")
+    amount = float(input("Amount? "))
+    items.append(item)
+    amounts.append(amount)
 
-print ("")
-print("-" * 40)
+total = sum(amounts)
+average = total / num_expenses if num_expenses > 0 else 0
+
+
+print("\n" + "-" * 40)
 print("SUMMARY")
-print(f"  - {item1:<10}: Php {amount1}")
-print(f"  - {item2:<10}: Php {amount2}")
+for item, amount in zip(items, amounts):
+    print(f" - {item:<10}: Php{amount}")
 print(f"\nTotal spent   : Php {total}")
 print(f"Average       : Php {average}")
 print("-" * 40)
-print(f"Made by: {author} | Installment 2")
+print(f"Made by: {author} | Installment 3")
 print("=" * 40)
