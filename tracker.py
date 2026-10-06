@@ -1,6 +1,6 @@
 # Module 1 - Laboratory 3: The Tracker Does Math
 # Author: MARK LAWRENCE N. MAQUILAN
-# A simple expense tracker that accepts a user-defined number of expenses.
+# A simple expense tracker that calculates, subtotal, average, tax, and budget.
 
 author = "MARK LAWRENCE N. MAQUILAN"
 
@@ -17,31 +17,41 @@ print(f"\t[4] {'Exit':<20} (coming soon)")
 
 
 name = input("\nWhat's your name? ")
-print(f"Welcome, {name}! Let's log your expenses.\n")
+print(f"Welcome, {name}! Let's log your two expenses.\n")
 
-# Number of expenses to enter
-num_expenses = int(input("How many expenses will you enter? "))
+subtotal = 0
 
-items = []
-amounts = []
+item1 = input("What's your first expense? ")
+amount1 = float(input(f"Amount of your {item1}? "))
+subtotal += amount1
 
-# Loop for collecting each expense
-for i in range(1, num_expenses + 1):
-    item = input(f"\nWhat is your expense no. {i}? ")
-    amount = float(input("Amount? "))
-    items.append(item)
-    amounts.append(amount)
+item2 = input("\nWhat's your second expense? ")
+amount2 = float(input(f"Amount of your {item2}? "))
+subtotal += amount2
 
-total = sum(amounts)
-average = total / num_expenses if num_expenses > 0 else 0
+average = subtotal / 2
 
+tax_rate = float(input("\nTax rate in %? "))
+tax = subtotal * (tax_rate / 100)
+
+total = subtotal + tax
+
+budget = float(input("How much is your budget? "))
+budget_limit = total > budget
+
+left = budget - total
 
 print("\n" + "-" * 40)
 print("SUMMARY")
-for item, amount in zip(items, amounts):
-    print(f" - {item:<10}: Php{amount}")
-print(f"\nTotal spent   : Php {total}")
-print(f"Average       : Php {average}")
+print(f"\t- {item1:<20}: Php {amount1}")
+print(f"\t- {item2:<20}: Php {amount2}\n")
+print(f"\tSubtotal\t\t: Php {subtotal:.2f}")
+print(f"\tAverage\t\t\t: {average:.2f}")
+print(f"\tTax ({tax_rate}%)\t\t: Php{tax:.2f}")
+print(f"\tTotal Amount\t\t: Php {total:.2f}")
+print(f"\tam I over-budget?\t: {budget_limit}")
+print(f"\tTotal budget left\t: Php {left:.2f}")
+
 print("-" * 40)
 print(f"Made by: {author} | Installment 3")
 print("=" * 40)
